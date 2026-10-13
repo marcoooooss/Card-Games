@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b0d10" />
+    <meta name="theme-color" content="#f4f0e5" />
     <meta
       name="description"
       content="Forma tu equipo Pokémon, elige tus estadísticas y reta a la arena en un duelo de cartas."
@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <title>Pokéduel — Arena de cartas</title>
@@ -65,6 +65,52 @@
               <span class="round-count" id="round-count">— / 05</span>
             </div>
           </div>
+
+          <section class="pixel-arena" aria-label="Combate Pokémon sincronizado">
+            <div class="pixel-arena-head">
+              <span><span class="pixel-live-dot"></span> COMBATE EN DIRECTO</span>
+              <span class="pixel-round-label">RONDA <strong id="pixel-round">—</strong></span>
+            </div>
+            <div class="pixel-stage" id="pixel-stage" data-mode="waiting" data-outcome="">
+              <div class="pixel-sky"></div>
+              <div class="pixel-sun"></div>
+              <div class="pixel-cloud cloud-one"></div>
+              <div class="pixel-cloud cloud-two"></div>
+              <div class="pixel-hill hill-back"></div>
+              <div class="pixel-hill hill-front"></div>
+              <div class="pixel-ground"></div>
+
+              <div class="fighter player-fighter">
+                <div class="fighter-hud">
+                  <div class="fighter-name-row"><strong id="pixel-player-name">TU POKÉMON</strong><span>NV. 50</span></div>
+                  <div class="hp-track" role="progressbar" aria-label="Energía del jugador" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span id="pixel-player-hp"></span></div>
+                  <div class="hp-value"><span>HP</span><strong id="pixel-player-hp-text">100 / 100</strong></div>
+                </div>
+                <span class="fighter-shadow"></span>
+                <img id="pixel-player-sprite" class="pixel-sprite" alt="" />
+              </div>
+
+              <div class="fighter rival-fighter">
+                <div class="fighter-hud">
+                  <div class="fighter-name-row"><strong id="pixel-rival-name">RIVAL</strong><span>NV. 50</span></div>
+                  <div class="hp-track" role="progressbar" aria-label="Energía del rival" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span id="pixel-rival-hp"></span></div>
+                  <div class="hp-value"><span>HP</span><strong id="pixel-rival-hp-text">100 / 100</strong></div>
+                </div>
+                <span class="fighter-shadow"></span>
+                <img id="pixel-rival-sprite" class="pixel-sprite" alt="" />
+              </div>
+
+              <div class="pixel-callout" id="pixel-callout" aria-live="polite">
+                <span>¡ELIGE TU POKÉMON!</span>
+                <small>tu primera jugada te espera</small>
+              </div>
+            </div>
+            <div class="pixel-battle-log">
+              <span class="log-prompt">▶</span>
+              <span id="pixel-battle-log">Cada carta elegida se convierte en un turno de combate.</span>
+              <span class="pixel-berry" aria-hidden="true">●</span>
+            </div>
+          </section>
 
           <div class="battlefield">
             <div class="player-side">
