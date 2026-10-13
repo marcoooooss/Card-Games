@@ -24,52 +24,59 @@
           <span>POKÉ<span class="brand-light">DUEL</span></span>
         </a>
         <div class="topbar-right">
-          <span class="live-indicator"><span></span> ARENA EN VIVO</span>
+          <span class="live-indicator"><span></span> TU CLUB POKÉMON</span>
           <span class="topbar-divider"></span>
-          <span class="season-label">TEMPORADA 01</span>
+          <span class="wallet-pill"><span aria-hidden="true">✦</span><strong id="coin-count">100</strong> MON</span>
         </div>
       </header>
 
       <main>
         <section class="intro-row" aria-labelledby="page-title">
           <div>
-            <p class="eyebrow"><span>01</span> / ELIGE. COMBATE. CONQUISTA.</p>
-            <h1 id="page-title">La arena<br /><span>es tuya.</span></h1>
+            <p class="eyebrow"><span>01</span> / ATRAPA. ENTRENA. ¡A COMBATIR!</p>
+            <h1 id="page-title">¡Tu aventura<br /><span>comienza!</span></h1>
             <p class="intro-copy">
-              Tu equipo. Tu estrategia. Cinco rondas para demostrar quién manda.
+              Prepara tu mazo, abre sobres y escribe tu propia historia.
             </p>
           </div>
           <div class="arena-stamp" aria-hidden="true">
             <span class="stamp-ring"></span>
             <span class="stamp-top">POKÉDUEL</span>
             <span class="stamp-center">PD<span>·</span>01</span>
-            <span class="stamp-bottom">EST. 2024 — KANTO</span>
+            <span class="stamp-bottom">TU PRÓXIMA AVENTURA</span>
           </div>
         </section>
 
+        <nav class="view-nav" aria-label="Menú principal">
+          <button class="view-tab is-active" type="button" data-view="battle"><span>⚔</span> COMBATE</button>
+          <button class="view-tab" type="button" data-view="deck"><span>▤</span> MI MAZO <span class="tab-count" id="deck-count">0 / 6</span></button>
+          <button class="view-tab" type="button" data-view="packs"><span>✦</span> SOBRES</button>
+          <span class="nav-spacer"></span>
+          <span class="profile-record">VICTORIAS <strong id="win-count">0</strong></span>
+        </nav>
+
+        <section class="view-pane" id="view-battle" aria-label="Combate Pokémon">
         <section class="arena-panel" aria-label="Arena de combate">
           <div class="arena-topline">
             <div class="arena-heading">
               <span class="status-dot"></span>
-              <span id="arena-status">PREPARANDO ARENA</span>
+              <span id="arena-status">PREPARANDO TU EQUIPO</span>
             </div>
-            <div class="round-track" aria-label="Rondas">
-              <span class="round-label">RONDA</span>
+            <div class="round-track" aria-label="Turno y estado del equipo">
+              <span class="round-label">TURNO</span>
               <div class="round-dots" id="round-dots">
-                <span class="round-dot active"></span>
-                <span class="round-dot"></span>
-                <span class="round-dot"></span>
-                <span class="round-dot"></span>
-                <span class="round-dot"></span>
+                <span class="round-dot"></span><span class="round-dot"></span>
+                <span class="round-dot"></span><span class="round-dot"></span>
+                <span class="round-dot"></span><span class="round-dot"></span>
               </div>
-              <span class="round-count" id="round-count">— / 05</span>
+              <span class="round-count" id="round-count">—</span>
             </div>
           </div>
 
           <section class="pixel-arena" aria-label="Combate Pokémon sincronizado">
             <div class="pixel-arena-head">
               <span><span class="pixel-live-dot"></span> COMBATE EN DIRECTO</span>
-              <span class="pixel-round-label">RONDA <strong id="pixel-round">—</strong></span>
+              <span class="pixel-round-label">TURNO <strong id="pixel-round">—</strong></span>
             </div>
             <div class="pixel-stage" id="pixel-stage" data-mode="waiting" data-outcome="">
               <div class="pixel-sky"></div>
@@ -82,7 +89,7 @@
 
               <div class="fighter player-fighter">
                 <div class="fighter-hud">
-                  <div class="fighter-name-row"><strong id="pixel-player-name">TU POKÉMON</strong><span>NV. 50</span></div>
+                  <div class="fighter-name-row"><strong id="pixel-player-name">TU POKÉMON</strong><span>ACTIVO</span></div>
                   <div class="hp-track" role="progressbar" aria-label="Energía del jugador" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span id="pixel-player-hp"></span></div>
                   <div class="hp-value"><span>HP</span><strong id="pixel-player-hp-text">100 / 100</strong></div>
                 </div>
@@ -92,7 +99,7 @@
 
               <div class="fighter rival-fighter">
                 <div class="fighter-hud">
-                  <div class="fighter-name-row"><strong id="pixel-rival-name">RIVAL</strong><span>NV. 50</span></div>
+                  <div class="fighter-name-row"><strong id="pixel-rival-name">RIVAL</strong><span>CPU</span></div>
                   <div class="hp-track" role="progressbar" aria-label="Energía del rival" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span id="pixel-rival-hp"></span></div>
                   <div class="hp-value"><span>HP</span><strong id="pixel-rival-hp-text">100 / 100</strong></div>
                 </div>
@@ -116,13 +123,13 @@
             <div class="player-side">
               <div class="side-heading">
                 <div>
-                  <p class="side-kicker">TU EQUIPO</p>
-                  <h2>Entrenador <span>01</span></h2>
+                  <p class="side-kicker">TU MAZO · ELIGE A QUIÉN ENVIAR</p>
+                  <h2>Tu equipo</h2>
                 </div>
-                <div class="score-box"><span id="player-score">0</span><small>PTS</small></div>
+                <div class="score-box"><span id="player-score">6</span><small>EN PIE</small></div>
               </div>
               <div class="hand" id="player-hand" aria-live="polite">
-                <div class="loading-hand"><span class="loader"></span> Buscando Pokémon...</div>
+                <div class="loading-hand"><span class="loader"></span> Preparando tu mazo...</div>
               </div>
             </div>
 
@@ -135,10 +142,10 @@
             <div class="opponent-side">
               <div class="side-heading">
                 <div>
-                  <p class="side-kicker">RIVAL DE LA ARENA</p>
-                  <h2>CPU <span>∞</span></h2>
+                  <p class="side-kicker">EQUIPO RIVAL</p>
+                  <h2>Entrenador rival</h2>
                 </div>
-                <div class="score-box opponent-score"><span id="opponent-score">0</span><small>PTS</small></div>
+                <div class="score-box opponent-score"><span id="opponent-score">6</span><small>EN PIE</small></div>
               </div>
               <div class="hand opponent-hand" id="opponent-hand" aria-live="polite">
                 <div class="opponent-waiting">
@@ -150,27 +157,52 @@
           </div>
 
           <div class="battle-footer">
-            <div class="battle-message" id="battle-message" role="status">
+            <div class="battle-message" id="battle-message" role="status" aria-live="polite">
               <span class="message-icon">✳</span>
-              <span>Tu equipo te está esperando. ¿Preparado?</span>
+              <span>Elige tu Pokémon activo y decide cada movimiento.</span>
             </div>
             <button class="primary-button" id="start-button" type="button" disabled>
-              <span>Conectando con PokéAPI</span><span class="button-arrow">↗</span>
+              <span>Preparando partida...</span><span class="button-arrow">↗</span>
             </button>
           </div>
         </section>
 
         <section class="rules-strip" aria-label="Cómo jugar">
-          <div class="rule-item"><span class="rule-number">01</span><span>ELIGE UNA CARTA</span></div>
+          <div class="rule-item"><span class="rule-number">01</span><span>ELIGE TU POKÉMON</span></div>
           <span class="rule-separator">/</span>
-          <div class="rule-item"><span class="rule-number">02</span><span>ESCOGE UNA ESTADÍSTICA</span></div>
+          <div class="rule-item"><span class="rule-number">02</span><span>ELIGE CADA MOVIMIENTO</span></div>
           <span class="rule-separator">/</span>
-          <div class="rule-item"><span class="rule-number">03</span><span>GANA 3 DE 5 RONDAS</span></div>
+          <div class="rule-item"><span class="rule-number">03</span><span>¡DEBILITA A TODO EL EQUIPO!</span></div>
           <span class="api-credit">POWERED BY <a href="https://pokeapi.co/" target="_blank" rel="noreferrer">POKÉAPI ↗</a></span>
+        </section>
+        </section>
+
+        <section class="view-pane library-pane" id="view-deck" aria-label="Colección y constructor de mazo" hidden>
+          <div class="view-heading">
+            <div><p class="eyebrow"><span>02</span> / TU COLECCIÓN, TUS REGLAS</p><h2>Mi mazo <span>y colección</span></h2><p>Elige seis Pokémon de tu colección. Este mazo será tuyo también en la próxima partida.</p></div>
+            <div class="deck-meter"><strong id="deck-meter">0 / 6</strong><span>POKÉMON EN EL MAZO</span></div>
+          </div>
+          <div class="deck-slots" id="deck-slots" aria-label="Pokémon de tu mazo"></div>
+          <div class="library-heading"><h3>Tu colección <span id="collection-count">0 Pokémon</span></h3><p>Selecciona o quita Pokémon para personalizar el mazo.</p></div>
+          <div class="collection-grid" id="collection-grid"><div class="loading-hand"><span class="loader"></span> Cargando colección...</div></div>
+          <div class="library-actions"><span id="deck-message" role="status">Cada mazo tiene seis Pokémon diferentes.</span><button class="primary-button" id="save-deck-button" type="button" disabled><span>Guardar mi mazo</span><span class="button-arrow">↗</span></button></div>
+        </section>
+
+        <section class="view-pane packs-pane" id="view-packs" aria-label="Tienda de sobres Pokémon" hidden>
+          <div class="view-heading">
+            <div><p class="eyebrow"><span>03</span> / CADA SOBRE, UNA SORPRESA</p><h2>La tienda <span>de sobres</span></h2><p>Ábrelos para descubrir Pokémon y hacer crecer tu colección. Los duplicados cuentan como fichas de colección.</p></div>
+            <div class="deck-meter wallet-large"><strong><span>✦</span> <span id="pack-wallet">100</span></strong><span>MONEDAS POKÉMON</span></div>
+          </div>
+          <div class="booster-shop">
+            <div class="booster-art" aria-hidden="true"><span class="pack-spark spark-one">✦</span><span class="pack-spark spark-two">✧</span><span class="pack-mark">PK<br /><small>MON</small></span><span class="pack-monster">★</span><span class="pack-ribbon">¡EDICIÓN AVENTURA!</span></div>
+            <div class="booster-info"><p class="side-kicker">SOBRE DE AVENTURA · 5 CARTAS</p><h3>¡Descubre quién<br />se une al equipo!</h3><p>Cinco Pokémon aleatorios directamente de PokéAPI. Puedes guardar tus favoritos en tu mazo.</p><div class="booster-price"><span>PRECIO</span><strong>✦ 50</strong><span>MONEDAS</span></div><button class="primary-button open-pack-button" id="open-pack-button" type="button" disabled><span>Preparando sobres...</span><span class="button-arrow">✦</span></button><span class="pack-hint" id="pack-hint">Completa un combate para ganar más monedas.</span></div>
+          </div>
+          <section class="pack-results" id="pack-results" aria-live="polite" hidden><div class="library-heading"><h3>¡Mira lo que había dentro! <span>+ colección</span></h3><p>Estas cartas ya están guardadas en tu colección.</p></div><div class="collection-grid" id="pack-pulls"></div></section>
+          <div class="pack-rules"><span>✦</span> Gana monedas al terminar un combate · Victoria 50 · Derrota 25 · Empate 35</div>
         </section>
 
         <footer class="page-footer">
-          <span>HECHO PARA ENTRENADORES CON HAMBRE DE VICTORIA.</span>
+          <span>¡TODOS LOS CAMINOS LLEVAN A UNA NUEVA AVENTURA!</span>
           <span>NO ES UN PRODUCTO OFICIAL DE NINTENDO O THE POKÉMON COMPANY.</span>
         </footer>
       </main>
